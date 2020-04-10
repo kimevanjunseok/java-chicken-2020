@@ -13,6 +13,10 @@ public class Menu {
         this.price = price;
     }
 
+    public boolean isSameNumber(String number) {
+        return Integer.toString(this.number).equals(number);
+    }
+
     @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";

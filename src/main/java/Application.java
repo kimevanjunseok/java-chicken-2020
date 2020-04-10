@@ -1,3 +1,4 @@
+import domain.Menu;
 import domain.MenuRepository;
 import domain.Menus;
 import domain.SelectNumberType;
@@ -11,14 +12,18 @@ public class Application {
 
     public static void main(String[] args) {
         SelectNumberType selectNumberType = null;
+        Tables tables = new Tables(TableRepository.tables());
+        Menus menus = new Menus(MenuRepository.menus());
+
         while (selectNumberType == null || !selectNumberType.isTypeThree()) {
             OutputView.printMain();
             selectNumberType = SelectNumberType.find(InputView.inputSelectFunction());
-            Tables tables = new Tables(TableRepository.tables());
-            OutputView.printTables(tables);
-            Table table = tables.find(InputView.inputTableNumber());
-            Menus menus = new Menus(MenuRepository.menus());
-            OutputView.printMenus(menus);
+            if (!selectNumberType.isTypeThree()) {
+                OutputView.printTables(tables);
+                Table table = tables.find(InputView.inputTableNumber());
+                OutputView.printMenus(menus);
+                Menu menu = menus.find(InputView.inputMenuNumber());
+            }
         }
     }
 }
