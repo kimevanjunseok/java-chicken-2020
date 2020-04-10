@@ -1,12 +1,10 @@
-import domain.Menu;
 import domain.MenuRepository;
+import domain.Menus;
 import domain.Table;
 import domain.TableRepository;
 import domain.Tables;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
 
@@ -19,8 +17,8 @@ public class Application {
 
         Table table = tables.find(InputView.inputTableNumber());
 
-//
-//        final List<Menu> menus = MenuRepository.menus();
-//        OutputView.printMenus(menus);
+        Menus menus = new Menus(MenuRepository.menus());
+        OutputView.printMenus(menus);
+
     }
 }

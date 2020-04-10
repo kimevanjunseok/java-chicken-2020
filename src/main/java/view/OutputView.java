@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Menus;
 import domain.Table;
 
 import domain.Tables;
@@ -34,13 +35,13 @@ public class OutputView {
     }
 
     private static void printTableNumbers(final Tables tables) {
-        for (final Table table : tables.getTables()) {
+        for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
     }
 
-    public static void printMenus(final List<Menu> menus) {
+    public static void printMenus(final Menus menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }

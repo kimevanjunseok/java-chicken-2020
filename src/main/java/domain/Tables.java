@@ -1,10 +1,10 @@
 package domain;
 
 import domain.exceptions.IsNotCollectTableNumberException;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Tables {
+public class Tables implements Iterable<Table> {
     private List<Table> tables;
 
     public Tables(List<Table> tables) {
@@ -15,14 +15,16 @@ public class Tables {
         return tables.size();
     }
 
-    public List<Table> getTables() {
-        return Collections.unmodifiableList(tables);
-    }
-
     public Table find(String input) {
         return tables.stream()
             .filter(table -> table.toString().equals(input))
             .findFirst()
             .orElseThrow(() -> new IsNotCollectTableNumberException("테이블이 존재하지 않습니다."));
+    }
+
+
+    @Override
+    public Iterator<Table> iterator() {
+        return tables.iterator();
     }
 }
