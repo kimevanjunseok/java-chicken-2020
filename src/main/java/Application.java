@@ -14,21 +14,15 @@ public class Application {
         SelectNumberType selectNumberType = null;
         Tables tables = new Tables(TableRepository.tables());
         Menus menus = new Menus(MenuRepository.menus());
+        Controller controller = Controller.getInstance();
+        controller.execute(tables, menus);
 
-        while (selectNumberType == null || !selectNumberType.isTypeThree()) {
-            OutputView.printMain();
-            selectNumberType = SelectNumberType.find(InputView.inputSelectFunction());
-            execute(selectNumberType, tables, menus);
-
-        }
     }
 
     private static void execute(SelectNumberType selectNumberType, Tables tables, Menus menus) {
         if (selectNumberType.isTypeOne()) {
             executeSelectNumberOne(tables, menus);
-            return ;
         }
-        executeSelectNumberTwo(tables, menus);
     }
 
     private static void executeSelectNumberOne(Tables tables, Menus menus) {

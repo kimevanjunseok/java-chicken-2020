@@ -1,6 +1,6 @@
 package domain;
 
-import domain.exceptions.WrongSelectNumberException;
+import domain.exceptions.WrongInputNumberException;
 import java.util.Arrays;
 
 public enum SelectNumberType {
@@ -18,7 +18,7 @@ public enum SelectNumberType {
         return Arrays.stream(SelectNumberType.values())
             .filter(type -> type.number.equals(input))
             .findFirst()
-            .orElseThrow(() -> new WrongSelectNumberException("기능은 1, 2, 3만 있습니다."));
+            .orElseThrow(() -> new WrongInputNumberException("기능은 1, 2, 3만 있습니다. 다시 입력해주세요"));
     }
 
     public boolean isTypeOne() {

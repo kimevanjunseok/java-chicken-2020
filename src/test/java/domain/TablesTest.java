@@ -3,7 +3,6 @@ package domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import domain.exceptions.IsNotCollectTableNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,7 @@ public class TablesTest {
     @ParameterizedTest
     @DisplayName("input값의 테이블이 없으면 오류")
     @ValueSource(strings = {"a", "0", "4"})
-    void findTable(String input) {
+    void findTable_Exception(String input) {
         assertThatThrownBy(() -> {
             tables.find(input);
         }).isInstanceOf(IsNotCollectTableNumberException.class);
