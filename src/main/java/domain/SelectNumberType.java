@@ -14,10 +14,14 @@ public enum SelectNumberType {
         this.number = number;
     }
 
-    public SelectNumberType find(String input) {
+    public static SelectNumberType find(String input) {
         return Arrays.stream(SelectNumberType.values())
             .filter(type -> type.number.equals(input))
             .findFirst()
             .orElseThrow(() -> new WrongSelectNumberException("기능은 1, 2, 3만 있습니다."));
+    }
+
+    public boolean isTypeThree() {
+        return number.equals("3");
     }
 }
