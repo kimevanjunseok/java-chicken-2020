@@ -2,7 +2,6 @@ package domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Table {
     private final int number;
