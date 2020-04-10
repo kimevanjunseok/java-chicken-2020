@@ -18,14 +18,29 @@ public class Application {
         while (selectNumberType == null || !selectNumberType.isTypeThree()) {
             OutputView.printMain();
             selectNumberType = SelectNumberType.find(InputView.inputSelectFunction());
-            if (!selectNumberType.isTypeThree()) {
-                OutputView.printTables(tables);
-                Table table = tables.find(InputView.inputTableNumber());
-                OutputView.printMenus(menus);
-                Menu menu = menus.find(InputView.inputMenuNumber());
-                int count = Integer.parseInt(InputView.inputMenuQuantityNumber());
-                tables.order(table, menu, count);
-            }
+            execute(selectNumberType, tables, menus);
+
         }
+    }
+
+    private static void execute(SelectNumberType selectNumberType, Tables tables, Menus menus) {
+        if (selectNumberType.isTypeOne()) {
+            executeSelectNumberOne(tables, menus);
+            return ;
+        }
+        executeSelectNumberTwo(tables, menus);
+    }
+
+    private static void executeSelectNumberOne(Tables tables, Menus menus) {
+        OutputView.printTables(tables);
+        Table table = tables.find(InputView.inputTableNumber());
+        OutputView.printMenus(menus);
+        Menu menu = menus.find(InputView.inputMenuNumber());
+        int count = Integer.parseInt(InputView.inputMenuQuantityNumber());
+        tables.order(table, menu, count);
+    }
+
+    private static void executeSelectNumberTwo(Tables tables, Menus menus) {
+
     }
 }

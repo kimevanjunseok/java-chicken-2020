@@ -20,6 +20,10 @@ public class Table {
         menus.put(menu, menus.get(menu) + count);
     }
 
+    public boolean hasMenu() {
+        return !menus.isEmpty();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

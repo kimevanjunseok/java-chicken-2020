@@ -5,12 +5,12 @@ import domain.Menus;
 import domain.Table;
 
 import domain.Tables;
-import java.util.List;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String BOTTOM_ORDER_LINE = "└ ₩ ┘";
 
     public static void printMain() {
         System.out.println("##메인화면");
@@ -22,16 +22,35 @@ public class OutputView {
     public static void printTables(final Tables tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.getSize();
-        printLine(TOP_LINE, size);
+        printTopLine(size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
-    private static void printLine(final String line, final int count) {
-        for (int index = 0; index < count; index++) {
-            System.out.print(line);
+    private static void printTopLine(int size) {
+        for (int i = 0; i < size; i++) {
+            System.out.print(TOP_LINE);
         }
         System.out.println();
+    }
+
+    private static void printBottomLine(Tables tables) {
+        for (Table table : tables) {
+            if (table.hasMenu()) {
+                printOrderLine();
+            } else {
+                printNotOrderLine();
+            }
+        }
+        System.out.println();
+    }
+
+    private static void printOrderLine() {
+        System.out.print(BOTTOM_ORDER_LINE);
+    }
+
+    private static void printNotOrderLine() {
+        System.out.print(BOTTOM_LINE);
     }
 
     private static void printTableNumbers(final Tables tables) {
