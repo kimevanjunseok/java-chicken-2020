@@ -2,6 +2,7 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
+import domain.Tables;
 import view.InputView;
 import view.OutputView;
 
@@ -12,7 +13,8 @@ public class Application {
     public static void main(String[] args) {
         OutputView.printMain();
         InputView.inputSelectFunction();
-//        final List<Table> tables = TableRepository.tables();
+        Tables tables = new Tables(TableRepository.tables());
+
 //        OutputView.printTables(tables);
 //
 //        final int tableNumber = InputView.inputTableNumber();
