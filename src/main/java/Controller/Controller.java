@@ -33,18 +33,21 @@ public class Controller {
     }
 
     private void operate(SelectNumberType selectNumberType, Tables tables, Menus menus) {
+        OutputView.printTables(tables);
+        Table table = getFindTable(tables);
         if (selectNumberType.isTypeOne()) {
-            executeSelectNumberOne(tables, menus);
+            executeSelectNumberOne(table, menus);
+        }
+        if (selectNumberType.isTypeTwo()) {
+            executeSelectNumberTwo(table);
         }
     }
 
-    private void executeSelectNumberOne(Tables tables, Menus menus) {
-        OutputView.printTables(tables);
-        Table table = getFindTable(tables);
+    private void executeSelectNumberOne(Table table, Menus menus) {
         OutputView.printMenus(menus);
         Menu menu = getFindMenu(menus);
         int count = getQuantityNumber();
-        tables.order(table, menu, count);
+        table.orderMenu(menu, count);
     }
 
     private Table getFindTable(Tables tables) {
@@ -126,7 +129,8 @@ public class Controller {
         }
     }
 
-    private void executeSelectNumberTwo(Tables tables, Menus menus) {
-
+    private void executeSelectNumberTwo(Table table) {
+        OutputView.printOrderHistory(table);
+        OutputView.printTablePaymentMethod(table);
     }
 }

@@ -66,4 +66,19 @@ public class OutputView {
             System.out.println(menu);
         }
     }
+
+    public static void printOrderHistory(Table table) {
+        System.out.println();
+        System.out.println("## 주문 내역");
+        System.out.println("메뉴 수량 금액");
+        for (Menu menu : table.getTableMenus().keySet()) {
+            int count = table.getTableMenus().get(menu);
+            System.out.println(menu.getName() + " " + count + " " + menu.getPrice() * count);
+        }
+    }
+
+    public static void printTablePaymentMethod(Table table) {
+        System.out.println("##" + table.getNumber() + "번 테이블의 결제를 진행합니다.");
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
+    }
 }

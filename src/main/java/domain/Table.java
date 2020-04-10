@@ -23,6 +23,14 @@ public class Table {
         return !menus.isEmpty();
     }
 
+    public Map<Menu, Integer> getTableMenus() {
+        return menus;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
