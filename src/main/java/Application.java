@@ -23,6 +23,8 @@ public class Application {
                 Table table = tables.find(InputView.inputTableNumber());
                 OutputView.printMenus(menus);
                 Menu menu = menus.find(InputView.inputMenuNumber());
+                int count = Integer.parseInt(InputView.inputMenuQuantityNumber());
+                tables.order(table, menu, count);
             }
         }
     }

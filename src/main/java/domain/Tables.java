@@ -22,6 +22,16 @@ public class Tables implements Iterable<Table> {
             .orElseThrow(() -> new IsNotCollectTableNumberException("테이블이 존재하지 않습니다."));
     }
 
+    private Table find(Table orderTable) {
+        return tables.stream()
+            .filter(table -> table.equals(orderTable))
+            .findFirst()
+            .orElseThrow(() -> new IsNotCollectTableNumberException("테이블이 존재하지 않습니다."));
+    }
+
+    public void order(Table table, Menu menu, int count) {
+        find(table).orderMenu(menu, count);
+    }
 
     @Override
     public Iterator<Table> iterator() {
