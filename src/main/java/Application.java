@@ -15,9 +15,10 @@ public class Application {
         InputView.inputSelectFunction();
         Tables tables = new Tables(TableRepository.tables());
 
-//        OutputView.printTables(tables);
-//
-//        final int tableNumber = InputView.inputTableNumber();
+        OutputView.printTables(tables);
+
+        final String tableNumber = InputView.inputTableNumber();
+
 //
 //        final List<Menu> menus = MenuRepository.menus();
 //        OutputView.printMenus(menus);
