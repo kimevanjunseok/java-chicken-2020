@@ -1,5 +1,6 @@
 package domain;
 
+import domain.exceptions.IsNotCollectTableNumberException;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,4 +19,10 @@ public class Tables {
         return Collections.unmodifiableList(tables);
     }
 
+    public Table find(String input) {
+        return tables.stream()
+            .filter(table -> table.toString().equals(input))
+            .findFirst()
+            .orElseThrow(() -> new IsNotCollectTableNumberException("테이블이 존재하지 않습니다."));
+    }
 }

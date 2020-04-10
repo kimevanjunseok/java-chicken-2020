@@ -17,7 +17,7 @@ public class Application {
 
         OutputView.printTables(tables);
 
-        final String tableNumber = InputView.inputTableNumber();
+        Table table = tables.find(InputView.inputTableNumber());
 
 //
 //        final List<Menu> menus = MenuRepository.menus();
